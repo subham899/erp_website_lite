@@ -1,0 +1,79 @@
+{% extends 'eployee_app/Base.html' %}
+
+{% block content %}
+    {% load static %}
+    <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: black;
+  padding: 8px 10px;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+</style>
+</head>
+
+
+
+<body id="" style="background-image: url('{% static "assets/img/pexels-photo-2694037.jpeg" %}')" ;>
+    <table class="table table-borderless">
+      <thead class="border-bottom font-weight-blood">
+      <tr>
+          <td>Full Name</td>
+          <td> Mobile</td>
+          <td>Position</td>
+          <td>
+              <a href="{% url 'em_insert'%}" >
+                <i  class="btn btn-primary">ADD NEW</i>
+              </a>
+          </td>
+      </tr>
+      </thead>
+    <tbody>
+    {% for Employee in Employee_list %}
+        <tr>
+         <td>{{Employee.Full_name}}</td>
+         <td>{{Employee.Mobile_no}}</td>
+         <td>{{Employee.Position}}</td>
+        <td>
+            <a href="{% url 'em_update' Employee.id %}" >
+               <button class="btn"><i class="fa fa-bars"></i>Edit</button>
+
+            </a>
+        </td><td>
+            <form action="{% url 'ep_delete' Employee.id%}" method="post">
+                {% csrf_token %}
+                <button class="btn"><i class="fa fa-trash"></i>Delete</button>
+            </form>
+        </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</body>
+
+
+<style>
+
+
+
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+
+</style>
+
+{% endblock %}

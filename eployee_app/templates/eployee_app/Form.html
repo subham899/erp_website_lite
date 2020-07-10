@@ -1,0 +1,54 @@
+{% extends 'eployee_app/Base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    {% load static %}
+    <body id="bg" style="background-image: url('{% static "img/wp2704824.jpg" %}')" ;>
+    <form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+
+    {{ form.Full_name|as_crispy_field}}
+    {{ form.Erp_code|as_crispy_field}}
+    <div class="row">
+        <div class="col-md-4">
+             {{ form.Position|as_crispy_field}}
+        </div>
+        <div class="col-md-8">
+             {{ form.Mobile_no|as_crispy_field}}
+
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-8">
+                <button type="submit" class="btn btn-success"><i class="far fa-database"></i>Submit</button>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'forlist' %}" class="btn btn-outline-info">showlist</a>
+{#               i class="fas fa-ad"></i> <#}
+            </div>
+        </div>
+    </form>
+    </body>
+
+<style>
+    .button {
+  background-color: rebeccapurple; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#bg{
+    background-size: 1800px 900px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+
+</style>
+{% endblock %}

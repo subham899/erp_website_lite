@@ -1,4 +1,4 @@
-"""erp_website URL Configuration
+"""employee URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -14,12 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path
+from eployee_app import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('websiteapp.urls')),
-    path('', include('eployee_app.urls')),
-
+    path('em_insert', views.employee_form, name='em_insert'),
+    path('<int:id>/',views.employee_form, name='em_update'),
+    path('forlist', views.employee_list, name='forlist'),
+    path('delete/<int:id>/', views.employee_delete, name='ep_delete')
 ]
